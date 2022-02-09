@@ -8,13 +8,7 @@ import utility.BaseException
 
 class EmployeeService : BaseException() {
 
-    fun save() {
-        var employee = Employee(
-            id = -1,
-            name = "Ro",
-            email = "Robert@yahoo.com",
-            salary = 9999.99
-        )
+    fun save(employee: Employee) : Employee {
 
         try {
             validate(employee) {
@@ -23,11 +17,14 @@ class EmployeeService : BaseException() {
                 validate(Employee::email).isNotBlank().isEmail()
                 validate(Employee::salary).hasDecimalDigits(max = 2)
             }
-            println("Save success!!!")
+
+            employee.id = 10;
+
+            return employee
 
         } catch (ex: ConstraintViolationException) {
             ex.validateDomain();
-            println("Error at validation!!!")
+            throw ex
         }
     }
 }

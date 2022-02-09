@@ -1,4 +1,4 @@
 package domain
 
-data class Employee(val id: Int, val name: String, val email: String, val salary: Double) {
+data class Employee(var id: Int, val name: String, val email: String, val salary: Double) {
 }

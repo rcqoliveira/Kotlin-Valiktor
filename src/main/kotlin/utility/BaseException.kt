@@ -6,7 +6,7 @@ import model.ErrorResponse
 
 open class BaseException {
 
-    fun ConstraintViolationException.validateDomain(): List<ErrorResponse>
+    fun ConstraintViolationException.validateDomain()
     {
         var items: MutableList<ErrorResponse> = mutableListOf()
 
@@ -14,7 +14,7 @@ open class BaseException {
             .forEach { items.add(ErrorResponse(it.property, it.toMessage().message)) }
 
         items.forEach(::println)
-        return  items
+//        return  items
     }
 
 }
